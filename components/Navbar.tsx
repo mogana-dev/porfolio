@@ -233,6 +233,7 @@ export default function Navbar({
 
         {/* Mobile controls */}
         <MobileMenu
+          key={pathname}
           links={links}
           locale={locale}
           pathname={pathname}
@@ -255,10 +256,6 @@ function MobileMenu({
 }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     if (!open) {

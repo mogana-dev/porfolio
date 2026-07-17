@@ -149,7 +149,7 @@ export default function Footer({
       label: footer.privacy,
     },
     {
-      href: "/sitemap.xml",
+      href: withLocale("/site-map", locale),
       label: footer.sitemap,
     },
   ];

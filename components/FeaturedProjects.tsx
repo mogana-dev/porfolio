@@ -3,6 +3,7 @@
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -35,7 +36,7 @@ interface FeaturedProjectsProps {
 export default function FeaturedProjects({
   locale = "en",
 }: FeaturedProjectsProps) {
-  const projects = getHomeProjects(locale);
+  const projects = useMemo(() => getHomeProjects(locale), [locale]);
   const t = dict[locale].featuredProjects;
   const shouldReduceMotion = useReducedMotion();
 

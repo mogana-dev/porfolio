@@ -40,6 +40,13 @@ export async function generateMetadata({
       description: getLocalizedCountryBlurb(country, "fr"),
       url: `https://mogana.dev/fr/countries/${country.slug}`,
       locale: "fr_FR",
+      images: [{ url: country.banner, width: 1920, height: 1080, alt: `${name} \u2014 Mogana.dev` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Ing\u00e9nieur Produit Full Stack en ${name} | Mogana.dev`,
+      description: getLocalizedCountryBlurb(country, "fr"),
+      images: [country.banner],
     },
   };
 }

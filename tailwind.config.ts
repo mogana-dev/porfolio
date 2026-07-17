@@ -17,14 +17,9 @@ const config: Config = {
         mist: "#FFFFFF",
         dim: "#CBD5E1",
         muted: "#94A3B8",
-        // European-inspired accents, used sparingly and deliberately
-        eublue: "#003399",
-        violet: "#2563EB",
-        cyan: "#2563EB",
-        purple: "#7C3AED",
-        saffron: "#FFCC00",
+        // Primary brand accent — used consistently for headings, links, CTAs and glows
+        brand: "#FF6B35",
         orange: "#F59E0B",
-        amber: "#FFCC00",
       },
       fontFamily: {
         display: ["var(--font-display)"],
@@ -32,15 +27,11 @@ const config: Config = {
         mono: ["var(--font-mono)"],
       },
       boxShadow: {
-        glow: "0 0 32px -12px rgba(37,99,235,0.45)",
-        "glow-cyan": "0 0 32px -12px rgba(255,204,0,0.35)",
-        "glow-orange": "0 0 32px -12px rgba(245,158,11,0.4)",
+        glow: "0 0 32px -12px rgba(255,107,53,0.45)",
       },
       backgroundImage: {
         "grid-fade":
           "linear-gradient(to bottom, rgba(6,16,31,0) 0%, #06101F 90%)",
-        "cta-gradient": "linear-gradient(90deg, #003399 0%, #2563EB 50%, #7C3AED 100%)",
-        "cta-gradient-highlight": "linear-gradient(90deg, #FFCC00 0%, #F59E0B 100%)",
       },
       animation: {
         blink: "blink 1s step-end infinite",

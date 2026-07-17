@@ -16,8 +16,8 @@ export default function Timeline({ entries }: { entries: TimelineEntry[] }) {
           transition={{ duration: 0.5, delay: idx * 0.1 }}
           className="relative"
         >
-          <span className="absolute -left-8 top-1.5 w-3.5 h-3.5 rounded-full bg-violet shadow-glow" />
-          <span className="text-xs uppercase tracking-wide text-saffron font-mono">{e.period}</span>
+          <span className="absolute -left-8 top-1.5 w-3.5 h-3.5 rounded-full bg-brand shadow-glow" />
+          <span className="text-xs uppercase tracking-wide text-brand font-mono">{e.period}</span>
           <h3 className="mt-1 font-display text-lg font-bold">{e.title}</h3>
           <p className="mt-2 text-sm text-dim leading-relaxed">{e.description}</p>
           <div className="mt-3 flex flex-wrap gap-2">

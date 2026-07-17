@@ -25,6 +25,7 @@ const routes: RouteDef[] = [
   { path: "/availability", changeFrequency: "weekly", priority: 0.65 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
   { path: "/recruiter-faq", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/site-map", changeFrequency: "monthly", priority: 0.4 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

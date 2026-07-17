@@ -129,12 +129,7 @@ function AnimatedCounter({
   const [count, setCount] = useState(1);
 
   useEffect(() => {
-    if (!isInView) {
-      return;
-    }
-
-    if (shouldReduceMotion) {
-      setCount(value);
+    if (!isInView || shouldReduceMotion) {
       return;
     }
 
@@ -174,9 +169,12 @@ function AnimatedCounter({
     };
   }, [isInView, shouldReduceMotion, value]);
 
+  const displayValue =
+    isInView && shouldReduceMotion ? value : count;
+
   return (
     <span ref={counterRef}>
-      {count}
+      {displayValue}
       {suffix}
     </span>
   );

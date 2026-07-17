@@ -10,10 +10,10 @@ import { getProjectBySlug, getLocalizedProject, projects } from "@/lib/projects"
 import { dict, withLocale, type Locale } from "@/lib/dictionary";
 
 const statusStyle: Record<string, string> = {
-  Live: "text-violet border-violet/40 bg-violet/10",
-  "In Progress": "text-saffron border-saffron/40 bg-saffron/10",
+  Live: "text-brand border-brand/40 bg-brand/10",
+  "In Progress": "text-amber-400 border-amber-400/40 bg-amber-400/10",
   "Private Demo": "text-dim border-line bg-panel2",
-  "Case Study Available": "text-orange border-orange/40 bg-orange/10",
+  "Case Study Available": "text-brand border-brand/40 bg-brand/10",
 };
 
 export default function CaseStudyDetail({ slug, locale = "en" }: { slug: string; locale?: Locale }) {
@@ -41,7 +41,7 @@ export default function CaseStudyDetail({ slug, locale = "en" }: { slug: string;
       />
       <Navbar locale={locale} />
       <article className="relative pt-32 pb-24 md:pt-44 md:pb-32">
-        <div className="pointer-events-none absolute -top-40 -left-40 w-[30rem] h-[30rem] rounded-full bg-violet/20 blur-[120px]" />
+        <div className="pointer-events-none absolute -top-40 -left-40 w-[30rem] h-[30rem] rounded-full bg-brand/20 blur-[120px]" />
         <div className="relative mx-auto max-w-4xl px-6 md:px-10">
           <Link href={withLocale("/case-studies", locale)} className="inline-flex items-center gap-1.5 text-sm text-dim hover:text-mist transition-colors focus-ring rounded">
             <ArrowLeft className="w-4 h-4" />
@@ -52,7 +52,7 @@ export default function CaseStudyDetail({ slug, locale = "en" }: { slug: string;
             <span className={`text-[11px] uppercase tracking-wide rounded-full border px-2.5 py-1 ${statusStyle[project.status]}`}>
               {common.statusLabels[project.status]}
             </span>
-            <span className="text-[11px] uppercase tracking-wide rounded-full border border-violet/30 bg-violet/10 text-violet px-2.5 py-1">
+            <span className="text-[11px] uppercase tracking-wide rounded-full border border-brand/30 bg-brand/10 text-brand px-2.5 py-1">
               {common.categoryLabels[project.category]}
             </span>
           </div>
@@ -84,7 +84,7 @@ export default function CaseStudyDetail({ slug, locale = "en" }: { slug: string;
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-violet/50 px-4 py-2 text-sm font-semibold text-violet hover:bg-violet/10 transition-all focus-ring"
+                className="inline-flex items-center gap-2 rounded-full border border-brand/50 px-4 py-2 text-sm font-semibold text-brand hover:bg-brand/10 transition-all focus-ring"
               >
                 {t.liveDemo}
                 <ArrowUpRight className="w-4 h-4" />
@@ -144,7 +144,7 @@ export default function CaseStudyDetail({ slug, locale = "en" }: { slug: string;
               <ul className="mt-5 space-y-3">
                 {project.approach.map((step) => (
                   <li key={step} className="flex items-start gap-3 text-sm text-mist/85">
-                    <CheckCircle2 className="w-4 h-4 text-violet mt-0.5 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-brand mt-0.5 shrink-0" />
                     {step}
                   </li>
                 ))}
@@ -170,7 +170,7 @@ export default function CaseStudyDetail({ slug, locale = "en" }: { slug: string;
           {project.architecture && (
             <div className="mt-8 glass rounded-2xl p-7 md:p-9">
               <div className="flex items-center gap-2.5">
-                <Boxes className="w-5 h-5 text-violet" />
+                <Boxes className="w-5 h-5 text-brand" />
                 <h2 className="font-display text-lg font-bold">{t.architecture}</h2>
               </div>
               <p className="mt-3 text-sm text-mist/85 leading-relaxed">{project.architecture}</p>
@@ -205,7 +205,7 @@ export default function CaseStudyDetail({ slug, locale = "en" }: { slug: string;
               </Link>
               <Link
                 href={withLocale(`/case-studies/${next.slug}`, locale)}
-                className="inline-flex items-center gap-2 rounded-full border border-violet/50 px-6 py-3 text-sm font-semibold text-violet hover:bg-violet/10 hover:shadow-glow transition-all focus-ring"
+                className="inline-flex items-center gap-2 rounded-full border border-brand/50 px-6 py-3 text-sm font-semibold text-brand hover:bg-brand/10 hover:shadow-glow transition-all focus-ring"
               >
                 {t.next}: {next.name}
                 <ArrowUpRight className="w-4 h-4" />

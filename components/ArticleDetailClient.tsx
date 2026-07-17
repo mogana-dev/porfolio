@@ -161,7 +161,7 @@ export default function ArticleDetailClient({
 
             <div className="flex flex-wrap gap-5">
               <Link href={withLocale("/contact", locale)} className="inline-flex items-center gap-2 text-sm font-extrabold underline decoration-white/60 decoration-2 underline-offset-4">
-                {dict[locale].hero.contactMe}
+                {locale === "fr" ? "Me Contacter" : "Contact Me"}
                 <ArrowRight className="h-4 w-4" />
               </Link>
 

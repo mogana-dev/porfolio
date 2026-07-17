@@ -20,7 +20,7 @@ import {
   projects,
   type ProjectCategory,
 } from "@/lib/projects";
-import type { Locale } from "@/lib/dictionary";
+import { dict, type Locale } from "@/lib/dictionary";
 
 const CATEGORY_ORDER: ProjectCategory[] = [
   "Enterprise SaaS",
@@ -36,29 +36,32 @@ export default function ProjectsBody({
   locale?: Locale;
 }) {
   const reduceMotion = useReducedMotion();
+  const common = dict[locale].common;
 
-  const localizedProjects: PortfolioProject[] = projects
-    .map((project) => getLocalizedProject(project, locale))
-    .slice(0, 16)
-    .map((project) => ({
-      slug: project.slug,
-      name: project.name,
-      category: project.category,
-      status: project.status,
-      overview: project.overview,
-      highlights: project.highlights,
-      tech: project.tech,
-      image: project.image,
-      websiteUrl: project.websiteUrl,
-      repoStatus: project.repoStatus,
-      repoUrl: project.repoUrl,
-      role: project.role,
-      approach: project.approach,
-    }));
+  const featured = projects.slice(0, 16);
 
   const grouped = CATEGORY_ORDER.map((category) => ({
     category,
-    items: localizedProjects.filter((project) => project.category === category),
+    items: featured
+      .filter((project) => project.category === category)
+      .map((project) => getLocalizedProject(project, locale))
+      .map(
+        (project): PortfolioProject => ({
+          slug: project.slug,
+          name: project.name,
+          category: common.categoryLabels[project.category],
+          status: common.statusLabels[project.status],
+          overview: project.overview,
+          highlights: project.highlights,
+          tech: project.tech,
+          image: project.image,
+          websiteUrl: project.websiteUrl,
+          repoStatus: project.repoStatus,
+          repoUrl: project.repoUrl,
+          role: project.role,
+          approach: project.approach,
+        }),
+      ),
   })).filter((group) => group.items.length > 0);
 
   const copy =
@@ -209,7 +212,7 @@ export default function ProjectsBody({
                   {copy.categoryPrefix}
                 </p>
                 <h2 className="mt-2 font-display text-2xl font-extrabold text-white sm:text-3xl">
-                  {group.category}
+                  {common.categoryLabels[group.category]}
                 </h2>
               </div>
               <p className="text-xs font-semibold text-white/40">
