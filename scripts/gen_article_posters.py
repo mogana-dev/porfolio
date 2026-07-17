@@ -3,11 +3,12 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 import random
 
+# Mogana.dev brand palette: dark navy, charcoal, orange, white.
 INK = np.array([6, 16, 31])
-BLUE = np.array([37, 99, 235])
-EUBLUE = np.array([0, 51, 153])
-VIOLET = np.array([124, 58, 237])
-SAFFRON = np.array([255, 204, 0])
+CHARCOAL = np.array([31, 41, 55])
+ORANGE = np.array([255, 107, 53])
+ORANGE_DEEP = np.array([230, 74, 25])
+ORANGE_LIGHT = np.array([255, 138, 87])
 
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 MONO = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
@@ -52,14 +53,14 @@ def save_label(img, text, accent):
     d.rectangle([60, H-70-len(lines)*38-14, 100, H-70-len(lines)*38-8], fill=tuple(accent)+(255,))
 
 configs = [
-    ("saas-concept-to-production", VIOLET, SAFFRON, "grid"),
-    ("accounting-erp-platforms", EUBLUE, BLUE, "chart"),
-    ("product-engineering-beyond-code", BLUE, VIOLET, "nodes"),
-    ("rbac-with-supabase", VIOLET, EUBLUE, "lock"),
-    ("marketplace-platforms-that-scale", SAFFRON, VIOLET, "network"),
-    ("nextjs-performance-seo", BLUE, SAFFRON, "speed"),
-    ("business-operations-to-software", EUBLUE, VIOLET, "bridge"),
-    ("bilingual-digital-products-europe", VIOLET, BLUE, "globe"),
+    ("saas-concept-to-production", ORANGE, CHARCOAL, "grid"),
+    ("accounting-erp-platforms", CHARCOAL, ORANGE, "chart"),
+    ("product-engineering-beyond-code", ORANGE_DEEP, ORANGE_LIGHT, "nodes"),
+    ("rbac-with-supabase", ORANGE, CHARCOAL, "lock"),
+    ("marketplace-platforms-that-scale", ORANGE_LIGHT, ORANGE_DEEP, "network"),
+    ("nextjs-performance-seo", CHARCOAL, ORANGE, "speed"),
+    ("business-operations-to-software", ORANGE_DEEP, CHARCOAL, "bridge"),
+    ("bilingual-digital-products-europe", ORANGE, ORANGE_LIGHT, "globe"),
 ]
 
 random.seed(4)
