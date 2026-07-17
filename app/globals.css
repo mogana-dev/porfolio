@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body: var(--font-display);
 }
 
 html {

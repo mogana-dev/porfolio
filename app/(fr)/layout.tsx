@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import GlobalWidgets from "@/components/GlobalWidgets";
 import SEOJsonLd, { organizationSchema, websiteSchema } from "@/components/SEOJsonLd";
+import { poppins, jetbrainsMono } from "@/lib/fonts";
 
 const siteUrl = "https://mogana.dev";
 
@@ -65,15 +66,8 @@ export default function RootLayoutFr({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" data-scroll-behavior="smooth">
+    <html lang="fr" className={`${poppins.variable} ${jetbrainsMono.variable}`} data-scroll-behavior="smooth">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font -- root layout <head> is the App Router equivalent of pages/_document.js */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <SEOJsonLd graph={[organizationSchema("fr"), websiteSchema("fr")]} />
       </head>
       <body className="bg-ink text-mist font-body antialiased">
