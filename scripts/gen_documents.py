@@ -1,3 +1,5 @@
+import os
+
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.lib.colors import HexColor
@@ -323,8 +325,10 @@ def gen_motivation_letter(path, lang):
     c.save()
 
 
-gen_cv("/home/claude/mogana/public/documents/cv/mogana-dev-cv-en.pdf", "en")
-gen_cv("/home/claude/mogana/public/documents/cv/mogana-dev-cv-fr.pdf", "fr")
-gen_motivation_letter("/home/claude/mogana/public/documents/motivation-letters/mogana-dev-motivation-letter-en.pdf", "en")
-gen_motivation_letter("/home/claude/mogana/public/documents/motivation-letters/mogana-dev-lettre-motivation-fr.pdf", "fr")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+gen_cv(os.path.join(ROOT, "public/documents/cv/mogana-dev-cv-en.pdf"), "en")
+gen_cv(os.path.join(ROOT, "public/documents/cv/mogana-dev-cv-fr.pdf"), "fr")
+gen_motivation_letter(os.path.join(ROOT, "public/documents/motivation-letters/mogana-dev-motivation-letter-en.pdf"), "en")
+gen_motivation_letter(os.path.join(ROOT, "public/documents/motivation-letters/mogana-dev-lettre-motivation-fr.pdf"), "fr")
 print("done")

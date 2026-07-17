@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 import random
@@ -26,7 +27,7 @@ def glow(img, cx, cy, r, color, strength=100):
     return Image.fromarray(np.clip(a, 0, 255).astype(np.uint8), "RGB")
 
 W, H = 1200, 675
-OUT = "/home/claude/mogana/public/images/articles"
+OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "public", "images", "articles")
 
 def save_label(img, text, accent):
     d = ImageDraw.Draw(img, "RGBA")
