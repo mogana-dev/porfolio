@@ -14,7 +14,7 @@ import {
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import SEOJsonLd, { breadcrumbSchema } from "@/components/SEOJsonLd";
+import SEOJsonLd, { articleSchema, breadcrumbSchema } from "@/components/SEOJsonLd";
 import { getArticles, type Block } from "@/lib/articles";
 import { dict, withLocale, type Locale } from "@/lib/dictionary";
 
@@ -74,6 +74,7 @@ export default function ArticleDetailClient({
             { name: dict[locale].nav.articles, path: withLocale("/articles", locale) },
             { name: article.title, path: withLocale(`/articles/${article.slug}`, locale) },
           ]),
+          articleSchema(article, locale),
         ]}
       />
 

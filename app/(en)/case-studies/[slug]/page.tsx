@@ -31,6 +31,13 @@ export async function generateMetadata({
       title: `${project.name} | Mogana.dev Case Study`,
       description: project.overview,
       url: `https://mogana.dev/case-studies/${project.slug}`,
+      images: [{ url: project.image, width: 1600, height: 900, alt: `${project.name} — product screenshot` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} | Mogana.dev Case Study`,
+      description: project.overview,
+      images: [project.image],
     },
   };
 }

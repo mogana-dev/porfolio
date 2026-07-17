@@ -8,6 +8,18 @@ export const metadata: Metadata = {
     canonical: "/countries",
     languages: { en: "/countries", fr: "/fr/countries", "x-default": "/countries" },
   },
+  openGraph: {
+    title: "Countries | Mogana.dev",
+    description: "Mogana.dev is open to Full Stack Product Engineer, SaaS and AI opportunities across Europe and Australia — explore country-specific availability.",
+    url: "https://mogana.dev/countries",
+    images: [{ url: "/images/seo/og-image.webp", width: 1200, height: 630, alt: "Mogana.dev — International Opportunities" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Countries | Mogana.dev",
+    description: "Mogana.dev is open to Full Stack Product Engineer, SaaS and AI opportunities across Europe and Australia — explore country-specific availability.",
+    images: ["/images/seo/og-image.webp"],
+  },
 };
 
 export default function CountriesPage() {

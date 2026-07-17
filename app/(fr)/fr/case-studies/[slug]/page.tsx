@@ -32,6 +32,13 @@ export async function generateMetadata({
       description: project.overview,
       url: `https://mogana.dev/fr/case-studies/${project.slug}`,
       locale: "fr_FR",
+      images: [{ url: project.image, width: 1600, height: 900, alt: `${project.name} \u2014 capture d'\u00e9cran` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} | \u00c9tude de Cas Mogana.dev`,
+      description: project.overview,
+      images: [project.image],
     },
   };
 }

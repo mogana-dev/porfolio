@@ -70,6 +70,29 @@ export function projectSchema(project: {
   };
 }
 
+export function articleSchema(article: {
+  slug: string;
+  title: string;
+  summary: string;
+  poster: string;
+  category: string;
+}, locale: "en" | "fr" = "en") {
+  const base = locale === "fr" ? `${siteUrl}/fr/articles/${article.slug}` : `${siteUrl}/articles/${article.slug}`;
+  return {
+    "@type": "Article",
+    "@id": `${base}#article`,
+    headline: article.title,
+    description: article.summary,
+    image: `${siteUrl}${article.poster}`,
+    url: base,
+    inLanguage: locale,
+    articleSection: article.category,
+    author: { "@id": `${siteUrl}/#organization` },
+    publisher: { "@id": `${siteUrl}/#organization` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": base },
+  };
+}
+
 export function faqSchema(items: readonly { q: string; a: string }[]) {
   return {
     "@type": "FAQPage",

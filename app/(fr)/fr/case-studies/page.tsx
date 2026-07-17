@@ -8,6 +8,19 @@ export const metadata: Metadata = {
     canonical: "/fr/case-studies",
     languages: { en: "/case-studies", fr: "/fr/case-studies", "x-default": "/case-studies" },
   },
+  openGraph: {
+    title: "Études de Cas | Mogana.dev",
+    description: "Études de cas approfondies couvrant le problème, la solution, l'approche et le résultat pour les projets phares de Mogana.dev.",
+    url: "https://mogana.dev/fr/case-studies",
+    locale: "fr_FR",
+    images: [{ url: "/images/seo/og-image.webp", width: 1200, height: 630, alt: "Études de Cas — Mogana.dev" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Études de Cas | Mogana.dev",
+    description: "Études de cas approfondies couvrant le problème, la solution, l'approche et le résultat pour les projets phares de Mogana.dev.",
+    images: ["/images/seo/og-image.webp"],
+  },
 };
 
 export default function CaseStudiesPageFr() {

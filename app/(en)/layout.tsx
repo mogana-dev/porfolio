@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@/app/globals.css";
 import GlobalWidgets from "@/components/GlobalWidgets";
 import SEOJsonLd, { organizationSchema, websiteSchema } from "@/components/SEOJsonLd";
@@ -58,6 +58,11 @@ export const metadata: Metadata = {
     ],
     apple: "/icons/favicon-180x180.png",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#061224",
+  colorScheme: "dark",
 };
 
 export default function RootLayoutEn({
