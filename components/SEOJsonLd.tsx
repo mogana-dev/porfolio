@@ -16,6 +16,9 @@ export function organizationSchema(locale: "en" | "fr" = "en") {
       "https://fr.linkedin.com/in/moganadev",
       "https://www.facebook.com/mogana.dev",
       "https://www.youtube.com/@MoganaDev",
+      "https://github.com/moganadev",
+      "https://x.com/moganadev",
+      "https://instagram.com/moganadev",
     ],
     contactPoint: [
       {

@@ -13,7 +13,7 @@ export default function Home() {
   const locale = "en" as const;
   const t = dict[locale].homeFinalCta;
   return (
-    <main id="main-content">
+    <main id="main-content" tabIndex={-1}>
       <Navbar locale={locale} />
       <Hero locale={locale} />
       <StatsGrid locale={locale} />

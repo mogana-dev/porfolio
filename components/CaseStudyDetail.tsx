@@ -28,7 +28,7 @@ export default function CaseStudyDetail({ slug, locale = "en" }: { slug: string;
   const next = getLocalizedProject(caseStudies[(currentIndex + 1) % caseStudies.length], locale);
 
   return (
-    <main id="main-content">
+    <main id="main-content" tabIndex={-1}>
       <SEOJsonLd
         graph={[
           breadcrumbSchema([

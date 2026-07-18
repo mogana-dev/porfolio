@@ -489,7 +489,7 @@ export default function HireMeBody({
       : "/documents/Mogana-dev-CV-EN.pdf";
 
   return (
-    <main id="main-content" className="overflow-hidden bg-[#061224] text-white">
+    <main id="main-content" tabIndex={-1} className="overflow-hidden bg-[#061224] text-white">
       <Navbar locale={locale} />
 
       {/* Banner only: no text or buttons */}

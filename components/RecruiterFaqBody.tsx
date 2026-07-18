@@ -181,7 +181,7 @@ export default function RecruiterFaqBody({
       };
 
   return (
-    <main id="main-content" className="overflow-hidden bg-[#061224] text-white">
+    <main id="main-content" tabIndex={-1} className="overflow-hidden bg-[#061224] text-white">
       <SEOJsonLd graph={[faqSchema(t.faqs)]} />
       <Navbar locale={locale} />
 

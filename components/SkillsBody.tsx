@@ -765,7 +765,7 @@ export default function SkillsBody({
 
   return (
     <main
-      id="main-content"
+      id="main-content" tabIndex={-1}
       className="overflow-hidden bg-[#061224] text-white"
     >
       <Navbar locale={locale} />

@@ -13,18 +13,16 @@ import {
   MessageCircle,
 } from "lucide-react";
 import {
+  FaDev,
   FaDiscord,
   FaFacebookF,
   FaGithub,
+  FaHashnode,
   FaInstagram,
   FaRedditAlien,
-  FaYoutube,
-} from "react-icons/fa";
-import {
-  FaDev,
-  FaHashnode,
   FaXTwitter,
-} from "react-icons/fa6";
+  FaYoutube,
+} from "@/components/icons/SocialIcons";
 
 import {
   CONTACT_EMAIL,

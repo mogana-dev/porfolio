@@ -475,7 +475,7 @@ export default function AvailabilityBody({
   const countriesPath = withLocale("/countries", locale);
 
   return (
-    <main id="main-content" className="overflow-hidden bg-[#061224] text-white">
+    <main id="main-content" tabIndex={-1} className="overflow-hidden bg-[#061224] text-white">
       <Navbar locale={locale} />
 
       {/* Banner only: no text, no buttons, no cropping */}

@@ -64,7 +64,7 @@ export default function CaseStudiesBody({ locale = "en" }: { locale?: Locale }) 
       };
 
   return (
-    <main id="main-content" className="overflow-hidden bg-[#061224] text-white">
+    <main id="main-content" tabIndex={-1} className="overflow-hidden bg-[#061224] text-white">
       <Navbar locale={locale} />
 
       <motion.section

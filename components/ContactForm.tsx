@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { cloneElement, isValidElement, useMemo, useState, type ReactElement } from "react";
 import {
   AlertCircle,
   CheckCircle2,
@@ -395,7 +395,11 @@ function Field({
         )}
       </span>
 
-      {children}
+      {isValidElement(children)
+        ? cloneElement(children as ReactElement<{ "aria-required"?: boolean }>, {
+            "aria-required": required ?? false,
+          })
+        : children}
     </label>
   );
 }

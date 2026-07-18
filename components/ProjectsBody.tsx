@@ -135,7 +135,7 @@ export default function ProjectsBody({
   const contactPath = locale === "fr" ? "/fr/contact" : "/contact";
 
   return (
-    <main id="main-content" className="overflow-hidden bg-[#061224] text-white">
+    <main id="main-content" tabIndex={-1} className="overflow-hidden bg-[#061224] text-white">
       <Navbar locale={locale} />
 
       <motion.section
