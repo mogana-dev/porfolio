@@ -14,7 +14,7 @@ export function organizationSchema(locale: "en" | "fr" = "en") {
     email: "hello@mogana.dev",
     sameAs: [
       "https://fr.linkedin.com/in/moganadev",
-      "https://www.facebook.com/mogana.dev",
+      "https://facebook.com/moganadev",
       "https://www.youtube.com/@MoganaDev",
       "https://github.com/moganadev",
       "https://x.com/moganadev",
