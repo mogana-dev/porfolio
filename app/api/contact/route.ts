@@ -24,7 +24,50 @@ function escapeHtml(input: string) {
     .replace(/'/g, "&#39;");
 }
 
+// Header fields (subject, replyTo) go straight into raw SMTP headers, not the
+// HTML body, so escapeHtml() doesn't protect them — a value containing CR/LF
+// could inject extra headers. Strip control characters before they're used
+// as header values.
+function sanitizeHeaderValue(input: string) {
+  return input.replace(/[\r\n]+/g, " ").trim();
+}
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const MAX_LENGTHS = {
+  name: 200,
+  email: 254,
+  company: 200,
+  country: 100,
+  jobTitle: 200,
+  requestType: 100,
+  preferredContact: 100,
+  message: 5000,
+} as const;
+
+// In-memory sliding-window rate limit: 5 submissions per 10 minutes per IP.
+// This resets on server restart and isn't shared across instances, but for a
+// single-instance low-traffic site it's a real, dependency-free deterrent
+// against scripted abuse of the Resend quota.
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const submissionLog = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = (submissionLog.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  timestamps.push(now);
+  submissionLog.set(ip, timestamps);
+  return timestamps.length > RATE_LIMIT_MAX;
+}
+
 export async function POST(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+  }
+
   let body: ContactPayload;
   try {
     body = await request.json();
@@ -40,6 +83,23 @@ export async function POST(request: Request) {
       { error: isFr ? "Le nom, l'e-mail et le message sont requis." : "Name, email and message are required." },
       { status: 400 }
     );
+  }
+
+  if (!EMAIL_PATTERN.test(email.trim())) {
+    return NextResponse.json(
+      { error: isFr ? "Merci de renseigner une adresse e-mail valide." : "Please provide a valid email address." },
+      { status: 400 }
+    );
+  }
+
+  for (const [field, max] of Object.entries(MAX_LENGTHS)) {
+    const value = body[field as keyof ContactPayload];
+    if (typeof value === "string" && value.length > max) {
+      return NextResponse.json(
+        { error: isFr ? "Une des valeurs saisies est trop longue." : "One of the submitted values is too long." },
+        { status: 400 }
+      );
+    }
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -81,8 +141,8 @@ export async function POST(request: Request) {
     const { error } = await resend.emails.send({
       from: "Mogana.dev Contact Form <onboarding@resend.dev>",
       to: toEmail,
-      replyTo: email,
-      subject: `[Mogana.dev] ${requestType} — ${name}`,
+      replyTo: sanitizeHeaderValue(email),
+      subject: `[Mogana.dev] ${sanitizeHeaderValue(requestType)} — ${sanitizeHeaderValue(name)}`,
       html,
     });
 

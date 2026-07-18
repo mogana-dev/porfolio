@@ -64,6 +64,12 @@ export default function ProjectsBody({
       ),
   })).filter((group) => group.items.length > 0);
 
+  // Global render-order index per card, so only the true first cards on the
+  // page (not the first card of every category section) are eager-loaded.
+  const cardIndex = new Map(
+    grouped.flatMap((group) => group.items).map((project, index) => [project.slug, index]),
+  );
+
   const copy =
     locale === "fr"
       ? {
@@ -221,11 +227,11 @@ export default function ProjectsBody({
             </motion.header>
 
             <div>
-              {group.items.map((project, index) => (
+              {group.items.map((project) => (
                 <ProjectCard
                   key={project.slug}
                   project={project}
-                  index={index}
+                  index={cardIndex.get(project.slug) ?? 0}
                   locale={locale}
                 />
               ))}
