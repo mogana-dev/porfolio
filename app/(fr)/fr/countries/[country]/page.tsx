@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CountryDetailBody from "@/components/CountryDetailBody";
 import { countries, getCountryBySlug, getLocalizedCountryName, getLocalizedCountryBlurb } from "@/lib/countries";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
   return countries.map((c) => ({ country: c.slug }));
@@ -38,7 +39,7 @@ export async function generateMetadata({
     openGraph: {
       title: `Ing\u00e9nieur Produit Full Stack en ${name} | Mogana.dev`,
       description: getLocalizedCountryBlurb(country, "fr"),
-      url: `https://mogana.dev/fr/countries/${country.slug}`,
+      url: `${SITE_URL}/fr/countries/${country.slug}`,
       locale: "fr_FR",
       images: [{ url: country.banner, width: 1920, height: 1080, alt: `${name} \u2014 Mogana.dev` }],
     },

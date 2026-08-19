@@ -27,6 +27,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Locale } from "@/lib/dictionary";
+import { SITE_URL } from "@/lib/site";
 
 type AboutMeBodyProps = {
   locale?: Locale;
@@ -588,12 +589,12 @@ export default function AboutMeBody({
         : "About Mogana.dev",
     url:
       locale === "fr"
-        ? "https://mogana.dev/fr/about-me"
-        : "https://mogana.dev/about-me",
+        ? `${SITE_URL}/fr/about-me`
+        : `${SITE_URL}/about-me`,
     mainEntity: {
       "@type": "Organization",
       name: "Mogana.dev",
-      url: "https://mogana.dev",
+      url: SITE_URL,
       description:
         locale === "fr"
           ? "Marque indépendante spécialisée dans les plateformes SaaS, l’IA, l’automatisation et les logiciels d’entreprise."

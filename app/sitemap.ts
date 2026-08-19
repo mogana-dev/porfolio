@@ -3,7 +3,7 @@ import { projects } from "@/lib/projects";
 import { countries } from "@/lib/countries";
 import { articlesEn } from "@/lib/articles";
 
-const siteUrl = "https://mogana.dev";
+import { SITE_URL } from "@/lib/site";
 
 type RouteDef = {
   path: string;
@@ -33,8 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
   for (const r of routes) {
-    const enUrl = `${siteUrl}${r.path}`;
-    const frUrl = `${siteUrl}/fr${r.path}`;
+    const enUrl = `${SITE_URL}${r.path}`;
+    const frUrl = `${SITE_URL}/fr${r.path}`;
     const alternates = { languages: { en: enUrl, fr: frUrl, "x-default": enUrl } };
     entries.push(
       { url: enUrl, lastModified, changeFrequency: r.changeFrequency, priority: r.priority, alternates },
@@ -43,8 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   for (const p of projects.filter((pr) => pr.hasCaseStudy)) {
-    const enUrl = `${siteUrl}/case-studies/${p.slug}`;
-    const frUrl = `${siteUrl}/fr/case-studies/${p.slug}`;
+    const enUrl = `${SITE_URL}/case-studies/${p.slug}`;
+    const frUrl = `${SITE_URL}/fr/case-studies/${p.slug}`;
     const alternates = { languages: { en: enUrl, fr: frUrl, "x-default": enUrl } };
     entries.push(
       { url: enUrl, lastModified, changeFrequency: "monthly", priority: 0.6, alternates },
@@ -53,8 +53,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   for (const c of countries) {
-    const enUrl = `${siteUrl}/countries/${c.slug}`;
-    const frUrl = `${siteUrl}/fr/countries/${c.slug}`;
+    const enUrl = `${SITE_URL}/countries/${c.slug}`;
+    const frUrl = `${SITE_URL}/fr/countries/${c.slug}`;
     const alternates = { languages: { en: enUrl, fr: frUrl, "x-default": enUrl } };
     entries.push(
       { url: enUrl, lastModified, changeFrequency: "monthly", priority: 0.55, alternates },
@@ -63,8 +63,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   for (const a of articlesEn) {
-    const enUrl = `${siteUrl}/articles/${a.slug}`;
-    const frUrl = `${siteUrl}/fr/articles/${a.slug}`;
+    const enUrl = `${SITE_URL}/articles/${a.slug}`;
+    const frUrl = `${SITE_URL}/fr/articles/${a.slug}`;
     const alternates = { languages: { en: enUrl, fr: frUrl, "x-default": enUrl } };
     entries.push(
       { url: enUrl, lastModified, changeFrequency: "monthly", priority: 0.6, alternates },

@@ -4,10 +4,10 @@ import GlobalWidgets from "@/components/GlobalWidgets";
 import SEOJsonLd, { organizationSchema, websiteSchema } from "@/components/SEOJsonLd";
 import { poppins, jetbrainsMono } from "@/lib/fonts";
 
-const siteUrl = "https://mogana.dev";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/fr",
     languages: { en: "/", fr: "/fr", "x-default": "/" },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   creator: "Mogana.dev",
   openGraph: {
     type: "website",
-    url: `${siteUrl}/fr`,
+    url: `${SITE_URL}/fr`,
     siteName: "Mogana.dev",
     title: "Mogana.dev | Ingénieur Produit Full Stack",
     description: "Je construis des produits — pas seulement des sites web.",

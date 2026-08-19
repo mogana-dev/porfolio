@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PrivacyBody from "@/components/PrivacyBody";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Confidentialit\u00e9 | Mogana.dev",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Confidentialité | Mogana.dev",
     description: "Informations sur la confidentialité pour le site Mogana.dev — ce qui est collecté, ce qui ne l'est pas, et comment nous contacter à ce sujet.",
-    url: "https://mogana.dev/fr/privacy",
+    url: `${SITE_URL}/fr/privacy`,
     locale: "fr_FR",
     images: [{ url: "/images/seo/og-image.webp", width: 1200, height: 630, alt: "Mogana.dev — Confidentialité" }],
   },

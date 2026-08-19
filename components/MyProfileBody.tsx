@@ -26,6 +26,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CONTACT_EMAIL } from "@/lib/contact";
 import type { Locale } from "@/lib/dictionary";
+import { SITE_URL } from "@/lib/site";
 
 type MyProfileBodyProps = {
   locale?: Locale;
@@ -824,12 +825,12 @@ export default function MyProfileBody({
         : "Mogana.dev Professional Profile",
     url:
       locale === "fr"
-        ? "https://mogana.dev/fr/my-profile"
-        : "https://mogana.dev/my-profile",
+        ? `${SITE_URL}/fr/my-profile`
+        : `${SITE_URL}/my-profile`,
     mainEntity: {
       "@type": "Organization",
       name: "Mogana.dev",
-      url: "https://mogana.dev",
+      url: SITE_URL,
       description:
         locale === "fr"
           ? "Ingénierie produit full stack, SaaS, intelligence artificielle et automatisation."

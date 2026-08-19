@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CaseStudiesBody from "@/components/CaseStudiesBody";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "\u00c9tudes de Cas | Mogana.dev — Ing\u00e9nieur Produit Full Stack",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Études de Cas | Mogana.dev",
     description: "Études de cas approfondies couvrant le problème, la solution, l'approche et le résultat pour les projets phares de Mogana.dev.",
-    url: "https://mogana.dev/fr/case-studies",
+    url: `${SITE_URL}/fr/case-studies`,
     locale: "fr_FR",
     images: [{ url: "/images/seo/og-image.webp", width: 1200, height: 630, alt: "Études de Cas — Mogana.dev" }],
   },

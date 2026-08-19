@@ -27,6 +27,7 @@ import Footer from "@/components/Footer";
 import IconTile from "@/components/IconTile";
 import { techIcons } from "@/lib/tech-icons";
 import type { Locale } from "@/lib/dictionary";
+import { SITE_URL } from "@/lib/site";
 
 type SkillsBodyProps = {
   locale?: Locale;
@@ -740,12 +741,12 @@ export default function SkillsBody({
         : "Mogana.dev Technical Skills",
     url:
       locale === "fr"
-        ? "https://mogana.dev/fr/skills"
-        : "https://mogana.dev/skills",
+        ? `${SITE_URL}/fr/skills`
+        : `${SITE_URL}/skills`,
     mainEntity: {
       "@type": "Organization",
       name: "Mogana.dev",
-      url: "https://mogana.dev",
+      url: SITE_URL,
       knowsAbout: [
         "Next.js",
         "React",

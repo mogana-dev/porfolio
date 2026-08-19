@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CaseStudyDetail from "@/components/CaseStudyDetail";
 import { getProjectBySlug, getLocalizedProject, projects } from "@/lib/projects";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
   return projects.filter((p) => p.hasCaseStudy).map((p) => ({ slug: p.slug }));
@@ -30,7 +31,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${project.name} | \u00c9tude de Cas Mogana.dev`,
       description: project.overview,
-      url: `https://mogana.dev/fr/case-studies/${project.slug}`,
+      url: `${SITE_URL}/fr/case-studies/${project.slug}`,
       locale: "fr_FR",
       images: [{ url: project.image, width: 1600, height: 900, alt: `${project.name} \u2014 capture d'\u00e9cran` }],
     },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CountriesBody from "@/components/CountriesBody";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Countries | Mogana.dev — International Product Engineering Opportunities",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Countries | Mogana.dev",
     description: "Mogana.dev is open to Full Stack Product Engineer, SaaS and AI opportunities across Europe and Australia — explore country-specific availability.",
-    url: "https://mogana.dev/countries",
+    url: `${SITE_URL}/countries`,
     images: [{ url: "/images/seo/og-image.webp", width: 1200, height: 630, alt: "Mogana.dev — International Opportunities" }],
   },
   twitter: {

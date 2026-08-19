@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ArticleDetailBody from "@/components/ArticleDetailBody";
 import { getArticles, getArticleBySlug } from "@/lib/articles";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
   return getArticles("fr").map((article) => ({
@@ -34,7 +35,7 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.summary,
-      url: `https://mogana.dev/fr/articles/${article.slug}`,
+      url: `${SITE_URL}/fr/articles/${article.slug}`,
       type: "article",
       siteName: "Mogana.dev",
       locale: "fr_FR",
