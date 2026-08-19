@@ -11,7 +11,6 @@ import {
   CheckCircle2,
   Clock3,
   Code2,
-  Download,
   Globe2,
   Languages,
   Layers3,
@@ -89,7 +88,6 @@ type HireMeContent = {
     title: string;
     description: string;
     contact: string;
-    cv: string;
   };
 };
 
@@ -267,7 +265,6 @@ const CONTENT: Record<Locale, HireMeContent> = {
       description:
         "Share the position, team context and expected contribution. I will respond clearly and professionally.",
       contact: "Request an interview",
-      cv: "Download CV",
     },
   },
   fr: {
@@ -443,7 +440,6 @@ const CONTENT: Record<Locale, HireMeContent> = {
       description:
         "Partagez le poste, le contexte de l’équipe et la contribution attendue. Je répondrai clairement et professionnellement.",
       contact: "Demander un entretien",
-      cv: "Télécharger le CV",
     },
   },
 };
@@ -483,10 +479,6 @@ export default function HireMeBody({
       };
 
   const contactPath = locale === "fr" ? "/fr/contact" : "/contact";
-  const cvPath =
-    locale === "fr"
-      ? "/documents/Mogana-dev-CV-FR.pdf"
-      : "/documents/Mogana-dev-CV-EN.pdf";
 
   return (
     <main id="main-content" tabIndex={-1} className="overflow-hidden bg-[#061224] text-white">
@@ -856,15 +848,6 @@ export default function HireMeBody({
               {t.cta.contact}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
-
-            <a
-              href={cvPath}
-              download
-              className="inline-flex items-center gap-2 text-sm font-extrabold text-white underline decoration-white/60 decoration-2 underline-offset-4 transition hover:decoration-white"
-            >
-              <Download className="h-4 w-4" aria-hidden="true" />
-              {t.cta.cv}
-            </a>
           </div>
         </div>
       </section>

@@ -15,7 +15,6 @@ import {
   Languages,
   Mail,
   MapPin,
-  MessageCircle,
   Rocket,
   ServerCog,
   Sparkles,
@@ -25,7 +24,7 @@ import {
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CONTACT_EMAIL, waLink } from "@/lib/contact";
+import { CONTACT_EMAIL } from "@/lib/contact";
 import type { Locale } from "@/lib/dictionary";
 
 type MyProfileBodyProps = {
@@ -34,12 +33,13 @@ type MyProfileBodyProps = {
 
 type ExperienceEntry = {
   role: string;
-  company: string;
+  /** Omitted where the employer is not independently established in this repo. */
+  company?: string;
   location: string;
   period: string;
   type: string;
-  logo: string;
-  logoAlt: string;
+  logo?: string;
+  logoAlt?: string;
   summary: string;
   responsibilities: string[];
   technologies?: string[];
@@ -67,7 +67,6 @@ type ProfileContent = {
 
   buttons: {
     email: string;
-    whatsapp: string;
     projects: string;
   };
 
@@ -127,7 +126,6 @@ const content: Record<Locale, ProfileContent> = {
 
     buttons: {
       email: "Email",
-      whatsapp: "WhatsApp",
       projects: "View Projects",
     },
 
@@ -193,12 +191,9 @@ const content: Record<Locale, ProfileContent> = {
 
         {
           role: "Full Stack Developer",
-          company: "Mobiz Ltd",
           location: "Mauritius",
           period: "January 2020 – March 2022",
           type: "Full-time",
-          logo: "/images/profile/mobiz-mu-logo.png",
-          logoAlt: "Mobiz Ltd logo",
           summary:
             "Built websites, business applications, e-commerce platforms, booking systems and digital tools for small and medium-sized businesses.",
           responsibilities: [
@@ -401,7 +396,6 @@ const content: Record<Locale, ProfileContent> = {
 
     buttons: {
       email: "E-mail",
-      whatsapp: "WhatsApp",
       projects: "Voir les projets",
     },
 
@@ -467,12 +461,9 @@ const content: Record<Locale, ProfileContent> = {
 
         {
           role: "Développeur Full Stack",
-          company: "Mobiz Ltd",
           location: "Maurice",
           period: "Janvier 2020 – Mars 2022",
           type: "Temps plein",
-          logo: "/images/profile/mobiz-mu-logo.png",
-          logoAlt: "Logo Mobiz Ltd",
           summary:
             "Création de sites web, applications métier, plateformes e-commerce, réservations et outils numériques.",
           responsibilities: [
@@ -1004,8 +995,8 @@ export default function MyProfileBody({
             </div>
 
             {/*
-              Mobile: two compact buttons plus a full-width Projects action.
-              Desktop: all three compact actions remain on one row.
+              Mobile: the two actions sit side by side in the grid.
+              Desktop: both compact actions remain on one row.
             */}
             <div className="grid w-full grid-cols-2 gap-3 lg:flex lg:w-auto lg:flex-nowrap lg:items-center lg:justify-end lg:pt-2">
               <AnimatedOutlineButton
@@ -1017,20 +1008,9 @@ export default function MyProfileBody({
               </AnimatedOutlineButton>
 
               <AnimatedOutlineButton
-                href={waLink(
-                  "Hello Mogana.dev, I would like to connect regarding a role or project.",
-                )}
-                icon={MessageCircle}
-                external
-                className="w-full lg:w-auto"
-              >
-                {t.buttons.whatsapp}
-              </AnimatedOutlineButton>
-
-              <AnimatedOutlineButton
                 href={projectsPath}
                 icon={ArrowRight}
-                className="col-span-2 w-full lg:col-auto lg:w-auto"
+                className="w-full lg:w-auto"
               >
                 {t.buttons.projects}
               </AnimatedOutlineButton>
@@ -1131,7 +1111,7 @@ export default function MyProfileBody({
             <div className="space-y-10">
               {t.experience.items.map((experience, index) => (
                 <motion.article
-                  key={`${experience.company}-${experience.role}`}
+                  key={`${experience.period}-${experience.role}`}
                   {...viewportAnimation}
                   variants={reveal}
                   className="relative grid grid-cols-[50px_minmax(0,1fr)] gap-5 sm:grid-cols-[66px_minmax(0,1fr)] sm:gap-7"
@@ -1149,13 +1129,20 @@ export default function MyProfileBody({
                       }
                       className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-[#ff6b35]/40 bg-white p-1.5 shadow-[0_0_0_5px_#061224,0_0_28px_rgba(255,107,53,0.16)] sm:h-16 sm:w-16"
                     >
-                      <Image
-                        src={experience.logo}
-                        alt={experience.logoAlt}
-                        fill
-                        sizes="64px"
-                        className="object-contain p-1.5"
-                      />
+                      {experience.logo ? (
+                        <Image
+                          src={experience.logo}
+                          alt={experience.logoAlt ?? ""}
+                          fill
+                          sizes="64px"
+                          className="object-contain p-1.5"
+                        />
+                      ) : (
+                        <BriefcaseBusiness
+                          aria-hidden="true"
+                          className="h-6 w-6 text-[#ff6b35] sm:h-7 sm:w-7"
+                        />
+                      )}
                     </motion.div>
                   </div>
 
@@ -1166,9 +1153,11 @@ export default function MyProfileBody({
                           {experience.role}
                         </h3>
 
-                        <p className="mt-1 text-base font-bold text-[#ff6b35]">
-                          {experience.company}
-                        </p>
+                        {experience.company && (
+                          <p className="mt-1 text-base font-bold text-[#ff6b35]">
+                            {experience.company}
+                          </p>
+                        )}
 
                         <p className="mt-1 text-sm text-white/50">
                           {experience.type}

@@ -10,7 +10,6 @@ import {
 import {
   Mail,
   MapPin,
-  MessageCircle,
 } from "lucide-react";
 import {
   FaDev,
@@ -24,11 +23,7 @@ import {
   FaYoutube,
 } from "@/components/icons/SocialIcons";
 
-import {
-  CONTACT_EMAIL,
-  WHATSAPP_NUMBER_DISPLAY,
-  waLink,
-} from "@/lib/contact";
+import { CONTACT_EMAIL } from "@/lib/contact";
 import {
   dict,
   withLocale,
@@ -452,28 +447,6 @@ export default function Footer({
 
                 <span className="pt-1">
                   {CONTACT_EMAIL}
-                </span>
-              </a>
-
-              <a
-                href={waLink(
-                  locale === "fr"
-                    ? "Bonjour Mogana.dev, j’ai visité votre portfolio et je souhaite discuter d’un projet ou d’une opportunité."
-                    : "Hello Mogana.dev, I visited your portfolio and would like to discuss a project or opportunity.",
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex w-fit items-start gap-2.5 text-white/60 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]"
-              >
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[#ff6b35]/15 bg-[#ff6b35]/[0.07]">
-                  <MessageCircle
-                    aria-hidden="true"
-                    className="h-3.5 w-3.5 text-[#ff6b35]"
-                  />
-                </span>
-
-                <span className="pt-1">
-                  {WHATSAPP_NUMBER_DISPLAY}
                 </span>
               </a>
 

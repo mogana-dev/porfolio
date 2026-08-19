@@ -11,7 +11,6 @@ import {
   Instagram,
   Mail,
   MapPin,
-  MessageCircle,
   Youtube,
   type LucideIcon,
 } from "lucide-react";
@@ -19,11 +18,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
-import {
-  CONTACT_EMAIL,
-  WHATSAPP_NUMBER_DISPLAY,
-  waLink,
-} from "@/lib/contact";
+import { CONTACT_EMAIL } from "@/lib/contact";
 import type { Locale } from "@/lib/dictionary";
 
 type SocialItem = {
@@ -98,7 +93,6 @@ export default function ContactBody({
           description:
             "Je suis ouvert aux opportunités internationales à temps plein, à la mobilité, aux projets SaaS et aux collaborations avec des équipes produit sérieuses.",
           email: "E-mail",
-          whatsapp: "WhatsApp",
           availability: "Disponibilité",
           availabilityValue:
             "Ouvert aux opportunités internationales et à la mobilité",
@@ -133,7 +127,6 @@ export default function ContactBody({
           description:
             "I am open to international full-time opportunities, relocation, SaaS products and meaningful collaborations with serious product teams.",
           email: "Email",
-          whatsapp: "WhatsApp",
           availability: "Availability",
           availabilityValue:
             "Open to international opportunities and relocation",
@@ -245,15 +238,6 @@ export default function ContactBody({
                 label={copy.email}
                 value={CONTACT_EMAIL}
                 href={`mailto:${CONTACT_EMAIL}`}
-              />
-              <ContactLine
-                icon={MessageCircle}
-                label={copy.whatsapp}
-                value={WHATSAPP_NUMBER_DISPLAY}
-                href={waLink(
-                  "Hello Mogana.dev, I would like to discuss a role or project.",
-                )}
-                external
               />
               <ContactLine
                 icon={MapPin}

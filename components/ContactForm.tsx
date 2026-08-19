@@ -5,11 +5,9 @@ import {
   AlertCircle,
   CheckCircle2,
   Loader2,
-  MessageCircle,
   Send,
 } from "lucide-react";
 
-import { waLink } from "@/lib/contact";
 import { dict, type Locale } from "@/lib/dictionary";
 
 type FormState = {
@@ -18,7 +16,6 @@ type FormState = {
   company: string;
   country: string;
   jobTitle: string;
-  preferredContact: string;
   message: string;
 };
 
@@ -38,10 +35,9 @@ export default function ContactForm({
       company: "",
       country: "",
       jobTitle: "",
-      preferredContact: t.contactMethods[0],
       message: "",
     }),
-    [t.contactMethods],
+    [],
   );
 
   const [form, setForm] = useState<FormState>(emptyForm);
@@ -53,19 +49,6 @@ export default function ContactForm({
     form.name.trim() !== "" &&
     form.email.trim() !== "" &&
     form.message.trim() !== "";
-
-  const buildWhatsappMessage = () =>
-    [
-      `${t.name}: ${form.name}`,
-      `${t.email}: ${form.email}`,
-      form.company ? `${t.company}: ${form.company}` : null,
-      form.country ? `${t.country}: ${form.country}` : null,
-      form.jobTitle ? `${t.jobTitle}: ${form.jobTitle}` : null,
-      "",
-      form.message,
-    ]
-      .filter(Boolean)
-      .join("\n");
 
   const submit = async (requestType: string) => {
     setTouched(true);
@@ -105,20 +88,6 @@ export default function ContactForm({
       setStatus("error");
       setErrorMessage(t.errorNetwork);
     }
-  };
-
-  const sendWhatsapp = () => {
-    setTouched(true);
-
-    if (!isValid) {
-      return;
-    }
-
-    window.open(
-      waLink(buildWhatsappMessage()),
-      "_blank",
-      "noopener,noreferrer",
-    );
   };
 
   const inputClass =
@@ -224,7 +193,7 @@ export default function ContactForm({
         </Field>
       </div>
 
-      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+      <div className="mt-5">
         <Field label={t.country} hint={t.optional}>
           <input
             type="text"
@@ -239,25 +208,6 @@ export default function ContactForm({
               })
             }
           />
-        </Field>
-
-        <Field label={t.preferredContact}>
-          <select
-            className={inputClass}
-            value={form.preferredContact}
-            onChange={(event) =>
-              setForm({
-                ...form,
-                preferredContact: event.target.value,
-              })
-            }
-          >
-            {t.contactMethods.map((method) => (
-              <option key={method} value={method}>
-                {method}
-              </option>
-            ))}
-          </select>
         </Field>
       </div>
 
@@ -321,15 +271,6 @@ export default function ContactForm({
           {t.sendMessage}
         </ActionButton>
       </div>
-
-      <button
-        type="button"
-        onClick={sendWhatsapp}
-        className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#08172a] px-4 py-3 text-xs font-semibold text-white/58 transition hover:border-[#ff6b35]/45 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]"
-      >
-        <MessageCircle className="h-4 w-4 text-[#ff6b35]" />
-        {t.preferWhatsapp}
-      </button>
 
       <p className="mt-4 flex items-start gap-2 text-xs leading-5 text-white/38">
         <Send className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#ff6b35]" />

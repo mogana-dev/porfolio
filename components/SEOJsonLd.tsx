@@ -25,7 +25,6 @@ export function organizationSchema(locale: "en" | "fr" = "en") {
         "@type": "ContactPoint",
         contactType: "customer service",
         email: "hello@mogana.dev",
-        telephone: "+33758973599",
         availableLanguage: ["English", "French"],
       },
     ],

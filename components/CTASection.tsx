@@ -12,13 +12,11 @@ import {
   Github,
   Globe2,
   Mail,
-  MessageCircle,
   Plane,
   Sparkles,
 } from "lucide-react";
 
 import MagneticButton from "./MagneticButton";
-import { waLink } from "@/lib/contact";
 import {
   dict,
   withLocale,
@@ -30,7 +28,6 @@ interface CTASectionProps {
   description?: string;
   primaryLabel?: string;
   primaryHref?: string;
-  showWhatsapp?: boolean;
   showGithub?: boolean;
   locale?: Locale;
 }
@@ -40,7 +37,6 @@ export default function CTASection({
   description,
   primaryLabel,
   primaryHref,
-  showWhatsapp = true,
   showGithub = true,
   locale = "en",
 }: CTASectionProps) {
@@ -67,11 +63,6 @@ export default function CTASection({
     locale === "fr"
       ? "Construisons un produit utile"
       : "Let’s build something useful";
-
-  const whatsappLabel =
-    locale === "fr"
-      ? "Discuter sur WhatsApp"
-      : "Chat on WhatsApp";
 
   const githubLabel =
     locale === "fr"
@@ -298,28 +289,6 @@ export default function CTASection({
                   />
                 </Link>
               </MagneticButton>
-
-              {showWhatsapp && (
-                <MagneticButton>
-                  <a
-                    href={waLink(
-                      locale === "fr"
-                        ? "Bonjour Mogana.dev, je souhaite discuter d’une opportunité professionnelle ou d’un projet."
-                        : "Hello Mogana.dev, I would like to discuss a professional opportunity or project.",
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.025] px-5 text-sm font-bold text-white/76 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#ff6b35]/55 hover:bg-[#ff6b35]/[0.075] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b35]"
-                  >
-                    <MessageCircle
-                      aria-hidden="true"
-                      className="h-4 w-4 text-[#ff6b35]"
-                    />
-
-                    <span>{whatsappLabel}</span>
-                  </a>
-                </MagneticButton>
-              )}
 
               {showGithub && (
                 <MagneticButton>

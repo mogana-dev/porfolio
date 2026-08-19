@@ -132,8 +132,7 @@ const content: Record<Locale, MilestoneContent> = {
         startYear: "2020",
         endYear: "2026",
         title: "Software & Web Product Engineering",
-        organisation:
-          "Mobiz Ltd · BlueWave Technologies Ltd",
+        organisation: "Mauritius",
         description:
           "Moved from operational leadership into full-stack product engineering, delivering SaaS platforms, ERP systems, marketplaces, e-commerce applications and AI-powered business solutions.",
         acquiredTitle: "Experience acquired",
@@ -237,8 +236,7 @@ const content: Record<Locale, MilestoneContent> = {
         startYear: "2020",
         endYear: "2026",
         title: "Ingénierie logicielle et web",
-        organisation:
-          "Mobiz Ltd · BlueWave Technologies Ltd",
+        organisation: "Maurice",
         description:
           "Transition du leadership opérationnel vers l’ingénierie produit Full Stack, avec livraison de SaaS, ERP, marketplaces, e-commerce et solutions métier propulsées par l’IA.",
         acquiredTitle: "Expérience acquise",

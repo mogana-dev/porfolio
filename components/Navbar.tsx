@@ -10,7 +10,6 @@ import {
 } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-import DownloadCVButton from "./DownloadCVButton";
 import LangSwitcher from "./LangSwitcher";
 import {
   dict,
@@ -222,13 +221,6 @@ export default function Navbar({
         {/* Desktop controls */}
         <div className="hidden shrink-0 items-center gap-2.5 xl:flex">
           <LangSwitcher locale={locale} />
-
-          <DownloadCVButton
-            locale={locale}
-            variant="solid"
-            size="compact"
-            dropdownAlign="right"
-          />
         </div>
 
         {/* Mobile controls */}
@@ -469,16 +461,6 @@ function MobileMenu({
                     },
                   )}
                 </ul>
-
-                <div className="mt-5 pt-4">
-                  <DownloadCVButton
-                    locale={locale}
-                    variant="solid"
-                    size="mobile"
-                    dropdownAlign="left"
-                    className="w-full"
-                  />
-                </div>
               </div>
             </motion.div>
           </>

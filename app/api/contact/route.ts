@@ -10,7 +10,6 @@ type ContactPayload = {
   country?: string;
   jobTitle?: string;
   requestType: string;
-  preferredContact: string;
   message: string;
   locale?: "en" | "fr";
 };
@@ -41,7 +40,6 @@ const MAX_LENGTHS = {
   country: 100,
   jobTitle: 200,
   requestType: 100,
-  preferredContact: 100,
   message: 5000,
 } as const;
 
@@ -75,7 +73,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, email, company, country, jobTitle, requestType, preferredContact, message, locale } = body;
+  const { name, email, company, country, jobTitle, requestType, message, locale } = body;
   const isFr = locale === "fr";
 
   if (!name?.trim() || !email?.trim() || !message?.trim()) {
@@ -111,8 +109,8 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error: isFr
-          ? "Le service e-mail n'est pas encore configur\u00e9 (RESEND_API_KEY manquant). Merci d'utiliser WhatsApp ou l'e-mail \u00e0 la place, ou de configurer Resend \u2014 voir le README."
-          : "The email service isn't configured yet (missing RESEND_API_KEY). Please use the WhatsApp or email link instead, or configure Resend — see README.",
+          ? "Le service e-mail n'est pas encore configur\u00e9 (RESEND_API_KEY manquant). Merci d'\u00e9crire directement par e-mail, ou de configurer Resend \u2014 voir le README."
+          : "The email service isn't configured yet (missing RESEND_API_KEY). Please email directly instead, or configure Resend — see README.",
       },
       { status: 503 }
     );
@@ -131,7 +129,6 @@ export async function POST(request: Request) {
           ${company ? `<tr><td><strong>Company</strong></td><td>${escapeHtml(company)}</td></tr>` : ""}
           ${country ? `<tr><td><strong>Country</strong></td><td>${escapeHtml(country)}</td></tr>` : ""}
           ${jobTitle ? `<tr><td><strong>Job Title</strong></td><td>${escapeHtml(jobTitle)}</td></tr>` : ""}
-          <tr><td><strong>Preferred contact</strong></td><td>${escapeHtml(preferredContact)}</td></tr>
         </table>
         <p style="margin-top: 16px;"><strong>Message:</strong></p>
         <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
@@ -147,13 +144,13 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      return NextResponse.json({ error: isFr ? "L'e-mail n'a pas pu \u00eatre envoy\u00e9. Merci d'essayer WhatsApp ou l'e-mail directement." : "The email couldn't be sent. Please try WhatsApp or email directly." }, { status: 502 });
+      return NextResponse.json({ error: isFr ? "L'e-mail n'a pas pu \u00eatre envoy\u00e9. Merci d'\u00e9crire directement par e-mail." : "The email couldn't be sent. Please email directly instead." }, { status: 502 });
     }
 
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(
-      { error: isFr ? "Un probl\u00e8me est survenu lors de l'envoi. Merci d'essayer WhatsApp ou l'e-mail directement." : "Something went wrong sending the message. Please try WhatsApp or email directly." },
+      { error: isFr ? "Un probl\u00e8me est survenu lors de l'envoi. Merci d'\u00e9crire directement par e-mail." : "Something went wrong sending the message. Please email directly instead." },
       { status: 500 }
     );
   }

@@ -20,12 +20,11 @@ The brand is intentionally presented without a personal legal name — only the 
 ## Features
 
 - **Bilingual (EN/FR)** — every page has a fully translated French counterpart, served from parallel route groups (`app/(en)` and `app/(fr)`), with correct `hreflang` alternates throughout
-- **16 project case studies** — each with a problem/solution narrative, technical approach, feature list and production outcome
+- **15 project case studies** — each with a problem/solution narrative, technical approach, feature list and production outcome
 - **12 country availability pages** — unique, non-templated content per country covering market fit, industries, languages, visa/relocation openness and why-hire-me positioning
 - **Structured data** — Organization, WebSite, BreadcrumbList, Article, and FAQPage JSON-LD schemas
 - **Full SEO coverage** — canonical URLs, hreflang alternates, Open Graph and Twitter Card previews on every page, XML sitemap, a human-readable HTML sitemap, and `robots.txt`
 - **Contact form** — sends enquiries by email in real time via [Resend](https://resend.com); no backend data storage
-- **WhatsApp integration** — pre-filled WhatsApp messages as an alternative contact channel
 - **Accessible by design** — skip-to-content link, semantic landmarks, visible focus states, `aria-label`s on icon-only controls, reduced-motion support throughout all animations
 
 ## Technology Stack
@@ -63,9 +62,8 @@ lib/                      Typed content and data: projects, countries, articles,
 
 public/
   images/                 Project screenshots, country banners, profile assets, icons
-  documents/              CV and motivation letter PDFs (EN/FR)
 
-scripts/                  One-off image/document generation utilities
+scripts/                  One-off image generation utilities
 ```
 
 ## Development

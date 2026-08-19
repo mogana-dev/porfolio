@@ -11,7 +11,6 @@ import {
   CheckCircle2,
   Clock3,
   Code2,
-  Download,
   Globe2,
   Languages,
   Mail,
@@ -105,7 +104,6 @@ export default function RecruiterFaqBody({
           ctaDescription:
             "Partagez le poste, le contexte de l’équipe et les prochaines étapes du processus.",
           contact: "Contacter Mogana.dev",
-          cv: "Télécharger le CV",
         }
       : {
           heroAlt: "Mogana.dev professional recruiter FAQ",
@@ -159,14 +157,9 @@ export default function RecruiterFaqBody({
           ctaDescription:
             "Share the role, team context and next steps in your hiring process.",
           contact: "Contact Mogana.dev",
-          cv: "Download CV",
         };
 
   const contactPath = locale === "fr" ? "/fr/contact" : "/contact";
-  const cvPath =
-    locale === "fr"
-      ? "/documents/Mogana-dev-CV-FR.pdf"
-      : "/documents/Mogana-dev-CV-EN.pdf";
 
   const reveal = reduceMotion
     ? {}
@@ -439,15 +432,6 @@ export default function RecruiterFaqBody({
               {copy.contact}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
-
-            <a
-              href={cvPath}
-              download
-              className="inline-flex items-center gap-2 text-sm font-extrabold text-white underline decoration-white/60 decoration-2 underline-offset-4 transition hover:decoration-white"
-            >
-              <Download className="h-4 w-4" aria-hidden="true" />
-              {copy.cv}
-            </a>
           </div>
         </div>
       </section>
